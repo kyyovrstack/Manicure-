@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Алина Смирнова — Мастер маникюра</title>
+    <title>Алина Смирнова — Премиум Маникюр</title>
     <style>
         :root {
-            --bg-color: #0f0e0e;
-            --card-bg: #181616;
-            --text-color: #f4f4f4;
-            --muted-color: #999999;
-            --accent-color: #d4a373; /* Благородный бежево-золотой акцент */
-            --whatsapp-color: #25D366;
-            --telegram-color: #229ED9;
+            --bg: #09090b;
+            --surface: #121216;
+            --surface-glass: rgba(18, 18, 22, 0.75);
+            --border: rgba(255, 255, 255, 0.08);
+            --text-main: #f4f4f5;
+            --text-muted: #a1a1aa;
+            --accent: #e2b794; /* Роскошный пудрово-золотой */
+            --accent-glow: rgba(226, 183, 148, 0.15);
             --transition: cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -23,14 +24,14 @@
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Шапка */
+        /* Премиум шапка */
         header {
             position: fixed;
             top: 0;
@@ -39,100 +40,121 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 25px 40px;
-            background: rgba(15, 14, 14, 0.85);
-            backdrop-filter: blur(12px);
+            padding: 20px 40px;
+            background: var(--surface-glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             z-index: 100;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid var(--border);
+            animation: slideDown 0.8s var(--transition);
         }
 
         .logo {
-            font-size: 16px;
-            font-weight: 600;
-            letter-spacing: 2px;
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 2.5px;
             text-decoration: none;
-            color: var(--text-color);
+            color: var(--text-main);
             text-transform: uppercase;
         }
 
-        .header-btn {
-            color: var(--bg-color);
-            background: var(--accent-color);
+        .header-action {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header-phone-text {
+            font-size: 14px;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        .btn-call {
+            background: var(--accent);
+            color: #09090b;
             text-decoration: none;
             font-size: 12px;
             font-weight: 600;
             letter-spacing: 1px;
-            padding: 10px 20px;
-            border-radius: 20px;
+            padding: 10px 22px;
+            border-radius: 50px;
             text-transform: uppercase;
-            transition: opacity 0.3s;
+            transition: transform 0.3s var(--transition), box-shadow 0.3s var(--transition);
+            box-shadow: 0 0 20px var(--accent-glow);
         }
 
-        .header-btn:hover {
-            opacity: 0.85;
+        .btn-call:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(226, 183, 148, 0.3);
         }
 
         /* Главный экран */
         .hero {
-            padding: 150px 40px 60px 40px;
-            max-width: 1200px;
+            padding: 160px 20px 80px 20px;
+            max-width: 1000px;
             margin: 0 auto;
             text-align: center;
+            animation: fadeIn 1s var(--transition);
         }
 
         .hero h1 {
-            font-size: clamp(32px, 4vw, 56px);
+            font-size: clamp(36px, 5vw, 64px);
             font-weight: 300;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             font-family: serif;
+            letter-spacing: -0.5px;
+            line-height: 1.1;
         }
 
         .hero h1 span {
-            color: var(--accent-color);
+            color: var(--accent);
             font-style: italic;
         }
 
         .hero p {
-            color: var(--muted-color);
-            font-size: 15px;
-            max-width: 450px;
-            margin: 0 auto 30px auto;
-            line-height: 1.5;
+            color: var(--text-muted);
+            font-size: 16px;
+            max-width: 500px;
+            margin: 0 auto 40px auto;
+            line-height: 1.6;
         }
 
-        /* Фильтры */
+        /* Категории */
         .categories {
             display: flex;
             justify-content: center;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
             padding: 0 20px;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
+            animation: fadeIn 1.2s var(--transition);
         }
 
         .cat-btn {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: var(--muted-color);
-            padding: 10px 22px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 12px 24px;
             border-radius: 30px;
             font-size: 12px;
             letter-spacing: 1.5px;
             text-transform: uppercase;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s var(--transition);
         }
 
         .cat-btn:hover, .cat-btn.active {
-            background: var(--accent-color);
-            color: var(--bg-color);
-            border-color: var(--accent-color);
+            background: var(--accent);
+            color: #09090b;
+            border-color: var(--accent);
             font-weight: 600;
+            box-shadow: 0 0 20px var(--accent-glow);
         }
 
         /* Галерея */
         .gallery-section {
-            padding: 0 40px 80px 40px;
+            padding: 0 40px 100px 40px;
             max-width: 1400px;
             margin: 0 auto;
         }
@@ -140,33 +162,36 @@
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
+            gap: 30px;
         }
 
         .portfolio-item {
             position: relative;
             overflow: hidden;
-            border-radius: 8px;
+            border-radius: 12px;
             cursor: pointer;
-            background: var(--card-bg);
+            background: var(--surface);
+            border: 1px solid var(--border);
             display: none;
         }
 
         .portfolio-item.visible {
             display: block;
-            animation: fadeIn 0.6s ease forwards;
+            animation: scaleUp 0.6s var(--transition) forwards;
         }
 
         .portfolio-item img {
             width: 100%;
-            height: 420px;
+            height: 460px;
             object-fit: cover;
             display: block;
-            transition: transform 0.6s var(--transition);
+            transition: transform 0.7s var(--transition), filter 0.5s ease;
+            filter: brightness(0.95);
         }
 
         .portfolio-item:hover img {
-            transform: scale(1.04);
+            transform: scale(1.05);
+            filter: brightness(1);
         }
 
         .portfolio-info {
@@ -174,124 +199,143 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            padding: 25px;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 30px;
+            background: linear-gradient(to top, rgba(9, 9, 11, 0.95) 0%, rgba(9, 9, 11, 0.4) 60%, transparent 100%);
             pointer-events: none;
         }
 
         .portfolio-info h3 {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 400;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
+            font-family: serif;
         }
 
         .portfolio-info span {
             font-size: 11px;
-            letter-spacing: 1.5px;
-            color: var(--accent-color);
+            letter-spacing: 2px;
+            color: var(--accent);
             text-transform: uppercase;
         }
 
-        /* Услуги и цены */
-        .services-section {
-            padding: 60px 40px 100px 40px;
-            max-width: 1200px;
+        /* Цены */
+        .pricing-section {
+            padding: 60px 40px 120px 40px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
         .section-title {
             text-align: center;
-            font-size: 32px;
+            font-size: 36px;
             font-weight: 300;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
             font-family: serif;
         }
 
-        .services-grid {
+        .pricing-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 24px;
         }
 
-        .service-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 30px;
-            border-radius: 8px;
+        .price-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 36px;
+            border-radius: 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: transform 0.3s var(--transition), border-color 0.3s ease;
         }
 
-        .service-info h3 {
+        .price-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(226, 183, 148, 0.3);
+        }
+
+        .price-info h3 {
             font-size: 18px;
             font-weight: 400;
             margin-bottom: 8px;
+            font-family: serif;
         }
 
-        .service-info p {
+        .price-info p {
             font-size: 13px;
-            color: var(--muted-color);
+            color: var(--text-muted);
         }
 
-        .service-price {
-            font-size: 20px;
-            font-weight: 400;
-            color: var(--accent-color);
+        .price-tag {
+            font-size: 22px;
+            font-weight: 300;
+            color: var(--accent);
             white-space: nowrap;
             margin-left: 20px;
+            font-family: serif;
         }
 
         /* Подвал */
         footer {
-            background: #090808;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 80px 40px;
+            background: #050506;
+            border-top: 1px solid var(--border);
+            padding: 100px 40px;
             text-align: center;
         }
 
         .footer-content h2 {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 300;
             margin-bottom: 15px;
             font-family: serif;
         }
 
         .footer-content p {
-            color: var(--muted-color);
-            font-size: 14px;
-            margin-bottom: 30px;
+            color: var(--text-muted);
+            font-size: 15px;
+            margin-bottom: 35px;
         }
 
-        .messenger-buttons {
+        .footer-phone-big {
+            display: inline-block;
+            font-size: clamp(24px, 4vw, 38px);
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            font-family: serif;
+            transition: color 0.3s;
+        }
+
+        .footer-phone-big:hover {
+            color: var(--accent);
+        }
+
+        .footer-btn-wrap {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
         }
 
-        .msg-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 14px 30px;
-            border-radius: 30px;
-            color: #ffffff;
+        .btn-large {
+            background: var(--accent);
+            color: #09090b;
             text-decoration: none;
             font-size: 13px;
             font-weight: 600;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            padding: 16px 40px;
+            border-radius: 50px;
             text-transform: uppercase;
-            transition: transform 0.3s, opacity 0.3s;
+            transition: transform 0.3s var(--transition), box-shadow 0.3s var(--transition);
+            box-shadow: 0 0 30px var(--accent-glow);
         }
 
-        .msg-btn:hover {
+        .btn-large:hover {
             transform: translateY(-3px);
-            opacity: 0.9;
+            box-shadow: 0 0 45px rgba(226, 183, 148, 0.4);
         }
-
-        .whatsapp-btn { background-color: var(--whatsapp-color); }
-        .telegram-btn { background-color: var(--telegram-color); }
 
         /* Лайтбокс */
         .lightbox {
@@ -300,7 +344,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.92);
+            background: rgba(5, 5, 6, 0.95);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -308,6 +352,7 @@
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.4s ease;
+            backdrop-filter: blur(10px);
         }
 
         .lightbox.active {
@@ -316,10 +361,11 @@
         }
 
         .lightbox img {
-            max-width: 85%;
-            max-height: 85vh;
+            max-width: 90%;
+            max-height: 90vh;
             object-fit: contain;
-            border-radius: 4px;
+            border-radius: 8px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
 
         .lightbox-close {
@@ -327,30 +373,47 @@
             top: 30px;
             right: 30px;
             color: #fff;
-            font-size: 35px;
+            font-size: 40px;
             cursor: pointer;
             background: none;
             border: none;
+            opacity: 0.7;
+            transition: opacity 0.3s;
         }
 
+        .lightbox-close:hover {
+            opacity: 1;
+        }
+
+        /* Анимации */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Адаптив */
-        @media (max-width: 900px) {
-            .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
-            .services-grid { grid-template-columns: 1fr; }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        @media (max-width: 600px) {
-            .portfolio-grid { grid-template-columns: 1fr; }
+        @keyframes scaleUp {
+            from { opacity: 0; transform: scale(0.95) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        /* Адаптив */
+        @media (max-width: 1024px) {
+            .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
             header { padding: 15px 20px; }
-            .hero { padding: 120px 20px 40px 20px; }
-            .gallery-section, .services-section { padding: 0 20px 60px 20px; }
-            .messenger-buttons { flex-direction: column; }
-            .msg-btn { width: 100%; }
+            .header-phone-text { display: none; }
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .hero { padding: 140px 20px 60px 20px; }
+            .gallery-section, .pricing-section { padding: 0 20px 60px 20px; }
+            .portfolio-item img { height: 380px; }
         }
     </style>
 </head>
@@ -359,16 +422,19 @@
     <!-- Шапка -->
     <header>
         <a href="#" class="logo">Алина Смирнова</a>
-        <a href="https://wa.me/79991234567" target="_blank" class="header-btn">Записаться</a>
+        <div class="header-action">
+            <span class="header-phone-text">+7 (999) 123-45-67</span>
+            <a href="tel:+79991234567" class="btn-call">Позвонить</a>
+        </div>
     </header>
 
     <!-- Главный экран -->
     <section class="hero">
-        <h1>Идеальный маникюр <span>с заботой</span> о ваших руках</h1>
-        <p>Чистый маникюр, премиальные материалы, стерильные инструменты и дизайн любой сложности.</p>
+        <h1>Идеальный маникюр <span>с заботой</span> о вас</h1>
+        <p>Безупречная чистота, современные техники, премиальные материалы и абсолютная безопасность.</p>
     </section>
 
-    <!-- Категории портфолио -->
+    <!-- Категории -->
     <div class="categories">
         <button class="cat-btn active" onclick="filterCategory('minimal')">Минимализм</button>
         <button class="cat-btn" onclick="filterCategory('french')">Френч</button>
@@ -382,95 +448,94 @@
             
             <!-- МИНИМАЛИЗМ -->
             <div class="portfolio-item minimal" data-category="minimal">
-                <img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=800&auto=format&fit=crop&q=80" alt="Минимализм 1">
+                <img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=900&auto=format&fit=crop&q=85" alt="Минимализм">
                 <div class="portfolio-info"><h3>Нюд и геометрия</h3><span>Минимализм</span></div>
             </div>
             <div class="portfolio-item minimal" data-category="minimal">
-                <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&auto=format&fit=crop&q=80" alt="Минимализм 2">
+                <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=900&auto=format&fit=crop&q=85" alt="Минимализм">
                 <div class="portfolio-info"><h3>Молочный гель-лак</h3><span>Минимализм</span></div>
             </div>
             <div class="portfolio-item minimal" data-category="minimal">
-                <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=800&auto=format&fit=crop&q=80" alt="Минимализм 3">
-                <div class="portfolio-info"><h3>Классический пастельный</h3><span>Минимализм</span></div>
+                <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=900&auto=format&fit=crop&q=85" alt="Минимализм">
+                <div class="portfolio-info"><h3>Пастельный глянец</h3><span>Минимализм</span></div>
             </div>
 
             <!-- ФРЕНЧ -->
             <div class="portfolio-item french" data-category="french">
-                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&auto=format&fit=crop&q=80" alt="Френч 1">
-                <div class="portfolio-info"><h3>Идеальный классический френч</h3><span>Френч</span></div>
+                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=900&auto=format&fit=crop&q=85" alt="Френч">
+                <div class="portfolio-info"><h3>Классический френч</h3><span>Френч</span></div>
             </div>
             <div class="portfolio-item french" data-category="french">
-                <img src="https://images.unsplash.com/photo-1599459164670-0b53360bc64d?w=800&auto=format&fit=crop&q=80" alt="Френч 2">
-                <div class="portfolio-info"><h3>Цветной контур</h3><span>Френч</span></div>
+                <img src="https://images.unsplash.com/photo-1599459164670-0b53360bc64d?w=900&auto=format&fit=crop&q=85" alt="Френч">
+                <div class="portfolio-info"><h3>Тонкий контур</h3><span>Френч</span></div>
             </div>
 
             <!-- ДИЗАЙН -->
             <div class="portfolio-item art" data-category="art">
-                <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=800&auto=format&fit=crop&q=80" alt="Дизайн 1">
-                <div class="portfolio-info"><h3>Абстракция и фольга</h3><span>Дизайн</span></div>
+                <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=900&auto=format&fit=crop&q=85" alt="Дизайн">
+                <div class="portfolio-info"><h3>Абстракция</h3><span>Дизайн</span></div>
             </div>
             <div class="portfolio-item art" data-category="art">
-                <img src="https://images.unsplash.com/photo-1563178406-4cdc2923acbc?w=800&auto=format&fit=crop&q=80" alt="Дизайн 2">
-                <div class="portfolio-info"><h3>Градиент и блестки</h3><span>Дизайн</span></div>
+                <img src="https://images.unsplash.com/photo-1563178406-4cdc2923acbc?w=900&auto=format&fit=crop&q=85" alt="Дизайн">
+                <div class="portfolio-info"><h3>Градиент</h3><span>Дизайн</span></div>
             </div>
 
             <!-- ПЕДИКЮР -->
             <div class="portfolio-item pedicure" data-category="pedicure">
-                <img src="https://images.unsplash.com/photo-1519415387727-a7c8db1fb965?w=800&auto=format&fit=crop&q=80" alt="Педикюр 1">
-                <div class="portfolio-info"><h3>Эстетичный педикюр</h3><span>Педикюр</span></div>
+                <img src="https://images.unsplash.com/photo-1519415387727-a7c8db1fb965?w=900&auto=format&fit=crop&q=85" alt="Педикюр">
+                <div class="portfolio-info"><h3>Эстетичный уход</h3><span>Педикюр</span></div>
             </div>
             <div class="portfolio-item pedicure" data-category="pedicure">
-                <img src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?w=800&auto=format&fit=crop&q=80" alt="Педикюр 2">
-                <div class="portfolio-info"><h3>Покрытие с дизайном</h3><span>Педикюр</span></div>
+                <img src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?w=900&auto=format&fit=crop&q=85" alt="Педикюр">
+                <div class="portfolio-info"><h3>Покрытие педикюр</h3><span>Педикюр</span></div>
             </div>
 
         </div>
     </section>
 
-    <!-- Услуги и цены -->
-    <section class="services-section">
-        <h2 class="section-title">Прайс-лист</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-info">
+    <!-- Прайс-лист -->
+    <section class="pricing-section">
+        <h2 class="section-title">Стоимость услуг</h2>
+        <div class="pricing-grid">
+            <div class="price-card">
+                <div class="price-info">
                     <h3>Маникюр без покрытия</h3>
                     <p>Комбинированный / аппаратный</p>
                 </div>
-                <div class="service-price">1 500 ₽</div>
+                <div class="price-tag">1 500 ₽</div>
             </div>
-            <div class="service-card">
-                <div class="service-info">
+            <div class="price-card">
+                <div class="price-info">
                     <h3>Маникюр + гель-лак</h3>
-                    <p>Снятие, укрепление, покрытие, дизайн</p>
+                    <p>Снятие, укрепление, дизайн</p>
                 </div>
-                <div class="service-price">2 500 ₽</div>
+                <div class="price-tag">2 500 ₽</div>
             </div>
-            <div class="service-card">
-                <div class="service-info">
+            <div class="price-card">
+                <div class="price-info">
                     <h3>Наращивание ногтей</h3>
                     <p>Любая длина и форма</p>
                 </div>
-                <div class="service-price">3 500 ₽</div>
+                <div class="price-tag">3 500 ₽</div>
             </div>
-            <div class="service-card">
-                <div class="service-info">
+            <div class="price-card">
+                <div class="price-info">
                     <h3>Педикюр полный</h3>
-                    <p>Обработка стоп и пальчиков + покрытие</p>
+                    <p>Обработка стоп + покрытие</p>
                 </div>
-                <div class="service-price">2 800 ₽</div>
+                <div class="price-tag">2 800 ₽</div>
             </div>
         </div>
     </section>
 
-    <!-- Подвал / Контакты -->
+    <!-- Подвал -->
     <footer>
         <div class="footer-content">
-            <h2>Онлайн-запись</h2>
-            <p>Выберите удобный мессенджер для записи на процедуру:</p>
-            
-            <div class="messenger-buttons">
-                <a href="https://wa.me/79991234567" target="_blank" class="msg-btn whatsapp-btn">Написать в WhatsApp</a>
-                <a href="https://t.me/username" target="_blank" class="msg-btn telegram-btn">Написать в Telegram</a>
+            <h2>Записаться на процедуру</h2>
+            <p>Позвоните мне прямо сейчас, чтобы выбрать удобное время:</p>
+            <a href="tel:+79991234567" class="footer-phone-big">+7 (999) 123-45-67</a>
+            <div class="footer-btn-wrap">
+                <a href="tel:+79991234567" class="btn-large">Позвонить мастеру</a>
             </div>
         </div>
     </footer>
@@ -478,7 +543,7 @@
     <!-- Лайтбокс -->
     <div class="lightbox" id="lightbox">
         <button class="lightbox-close" id="lightboxClose">&times;</button>
-        <img id="lightboxImg" src="" alt="Zoomed">
+        <img id="lightboxImg" src="" alt="Фото работ">
     </div>
 
     <script>
