@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Алина Смирнова — Студия маникюра</title>
+    <title>Алина Смирнова — Премиум Маникюр</title>
     <style>
         :root {
-            --bg: #0b0b0d;
-            --card-bg: #141418;
-            --card-border: rgba(255, 255, 255, 0.07);
-            --text-main: #f8f9fa;
-            --text-muted: #9ba1a6;
-            --accent: #dfb18b;
-            --accent-soft: rgba(223, 177, 139, 0.12);
-            --transition: cubic-bezier(0.25, 1, 0.5, 1);
+            --bg: #070709;
+            --card: #111116;
+            --border: rgba(255, 255, 255, 0.08);
+            --text: #f4f4f6;
+            --muted: #9494a0;
+            --accent-gold: #f3ba7b;
+            --accent-mint: #00e5bc;
+            --glow-gold: rgba(243, 186, 123, 0.15);
+            --glow-mint: rgba(0, 229, 188, 0.12);
+            --transition: cubic-bezier(0.19, 1, 0.22, 1);
         }
 
         * {
@@ -24,39 +26,38 @@
 
         body {
             background-color: var(--bg);
-            color: var(--text-main);
+            color: var(--text);
             font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Шапка в стиле floating bar */
+        /* Уникальный плавающий хедер с разворотом */
         header {
             position: fixed;
-            top: 20px;
+            top: 15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 90%;
-            max-width: 1200px;
+            width: 92%;
+            max-width: 1300px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 30px;
-            background: rgba(20, 20, 24, 0.8);
+            padding: 14px 28px;
+            background: rgba(17, 17, 22, 0.85);
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
             z-index: 100;
-            border: 1px solid var(--card-border);
-            border-radius: 100px;
-            animation: fadeInDown 0.8s var(--transition);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            animation: slideDown 0.8s var(--transition);
         }
 
         .logo {
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: 2px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 3px;
             text-decoration: none;
-            color: var(--text-main);
+            color: var(--accent-mint);
             text-transform: uppercase;
         }
 
@@ -68,309 +69,298 @@
 
         .header-phone {
             font-size: 13px;
-            color: var(--text-muted);
+            color: var(--muted);
             text-decoration: none;
-            letter-spacing: 0.5px;
-            transition: color 0.3s;
+            letter-spacing: 1px;
         }
 
-        .header-phone:hover {
-            color: var(--accent);
-        }
-
-        .btn-main {
-            background: var(--accent);
-            color: #0b0b0d;
+        .btn-call-sm {
+            background: var(--accent-mint);
+            color: #070709;
             text-decoration: none;
             font-size: 11px;
-            font-weight: 700;
+            font-weight: 800;
             letter-spacing: 1.5px;
             padding: 10px 20px;
-            border-radius: 50px;
+            border-radius: 12px;
             text-transform: uppercase;
-            transition: transform 0.3s var(--transition), box-shadow 0.3s var(--transition);
-            box-shadow: 0 0 20px var(--accent-soft);
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 0 20px var(--glow-mint);
         }
 
-        .btn-main:hover {
+        .btn-call-sm:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(223, 177, 139, 0.3);
+            box-shadow: 0 0 30px rgba(0, 229, 188, 0.4);
         }
 
-        /* Главный экран: Асимметрия */
-        .hero {
-            padding: 140px 20px 60px 20px;
-            max-width: 1200px;
+        /* Главный асимметричный блок */
+        .hero-chaos {
+            padding: 150px 20px 80px 20px;
+            max-width: 1300px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
+            grid-template-columns: 1fr 1.2fr;
             gap: 40px;
             align-items: center;
             animation: fadeIn 1s var(--transition);
         }
 
-        .hero-content h1 {
-            font-size: clamp(38px, 4.5vw, 62px);
+        .hero-text-box h1 {
+            font-size: clamp(40px, 5vw, 68px);
             font-weight: 300;
-            line-height: 1.1;
-            margin-bottom: 20px;
+            line-height: 1.05;
+            margin-bottom: 25px;
             font-family: serif;
         }
 
-        .hero-content h1 span {
-            color: var(--accent);
+        .hero-text-box h1 span {
+            color: var(--accent-gold);
             font-style: italic;
+            font-weight: 400;
         }
 
-        .hero-content p {
-            color: var(--text-muted);
-            font-size: 15px;
+        .hero-text-box p {
+            color: var(--muted);
+            font-size: 16px;
             line-height: 1.6;
-            margin-bottom: 30px;
-            max-width: 460px;
+            margin-bottom: 35px;
+            max-width: 440px;
         }
 
-        .hero-badge-box {
-            display: flex;
-            gap: 15px;
-        }
-
-        .hero-badge {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            padding: 15px 20px;
-            border-radius: 16px;
-            flex: 1;
-        }
-
-        .hero-badge b {
-            display: block;
-            font-size: 20px;
-            color: var(--accent);
-            font-family: serif;
-            margin-bottom: 4px;
-        }
-
-        .hero-badge span {
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-
-        .hero-image-card {
+        .hero-card-img {
             position: relative;
-            height: 420px;
-            border-radius: 24px;
+            height: 480px;
+            border-radius: 30px;
             overflow: hidden;
-            border: 1px solid var(--card-border);
+            border: 1px solid var(--border);
+            transform: rotate(-1.5deg);
+            transition: transform 0.6s var(--transition);
         }
 
-        .hero-image-card img {
+        .hero-card-img:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .hero-card-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.8s var(--transition);
         }
 
-        .hero-image-card:hover img {
-            transform: scale(1.04);
-        }
-
-        /* Переключатель категорий */
-        .categories-wrap {
-            max-width: 1200px;
-            margin: 0 auto 30px auto;
+        /* Категории (разбросанные кнопки) */
+        .categories-chaos {
+            max-width: 1300px;
+            margin: 0 auto 60px auto;
             padding: 0 20px;
             display: flex;
-            gap: 10px;
+            gap: 12px;
             flex-wrap: wrap;
-            animation: fadeIn 1.2s var(--transition);
+            justify-content: flex-start;
         }
 
         .cat-btn {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            color: var(--text-muted);
-            padding: 10px 22px;
-            border-radius: 50px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            color: var(--muted);
+            padding: 14px 26px;
+            border-radius: 16px;
             font-size: 12px;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
             cursor: pointer;
             transition: all 0.3s var(--transition);
         }
 
         .cat-btn:hover, .cat-btn.active {
-            background: var(--accent);
-            color: #0b0b0d;
-            border-color: var(--accent);
-            font-weight: 600;
+            background: var(--accent-gold);
+            color: #070709;
+            border-color: var(--accent-gold);
+            font-weight: 700;
+            box-shadow: 0 0 25px var(--glow-gold);
+            transform: translateY(-2px);
         }
 
-        /* Галерея в стиле Bento Grid */
-        .gallery-section {
-            max-width: 1200px;
-            margin: 0 auto 80px auto;
+        /* Хаотичная асимметричная галерея */
+        .gallery-chaos {
+            max-width: 1300px;
+            margin: 0 auto 100px auto;
             padding: 0 20px;
-        }
-
-        .bento-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
         }
 
-        .bento-item {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 20px;
+        .gallery-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
             overflow: hidden;
             position: relative;
             cursor: pointer;
             display: none;
         }
 
-        .bento-item.visible {
+        .gallery-item.visible {
             display: block;
             animation: scaleUp 0.6s var(--transition) forwards;
         }
 
-        /* Делаем сетку разнообразной */
-        .bento-item.large {
-            grid-column: span 2;
-        }
+        /* Разные размеры для сдвига блоков */
+        .item-1 { grid-column: span 7; }
+        .item-2 { grid-column: span 5; margin-top: 40px; }
+        .item-3 { grid-column: span 4; }
+        .item-4 { grid-column: span 8; margin-top: -30px; }
+        .item-5 { grid-column: span 6; }
+        .item-6 { grid-column: span 6; margin-top: 20px; }
 
-        .bento-item img {
+        .gallery-item img {
             width: 100%;
-            height: 340px;
+            height: 380px;
             object-fit: cover;
             display: block;
-            transition: transform 0.6s var(--transition), filter 0.4s ease;
+            transition: transform 0.7s var(--transition), filter 0.4s;
         }
 
-        .bento-item.large img {
-            height: 340px;
+        .gallery-item:hover img {
+            transform: scale(1.04);
+            filter: brightness(1.1);
         }
 
-        .bento-item:hover img {
-            transform: scale(1.03);
-            filter: brightness(1.05);
-        }
-
-        .bento-info {
-            padding: 20px 24px;
+        .gallery-info {
+            padding: 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: var(--card);
         }
 
-        .bento-info h3 {
+        .gallery-info h3 {
             font-size: 16px;
             font-weight: 400;
             font-family: serif;
         }
 
-        .bento-info span {
+        .gallery-info span {
             font-size: 11px;
-            letter-spacing: 1.5px;
-            color: var(--accent);
+            letter-spacing: 2px;
+            color: var(--accent-mint);
             text-transform: uppercase;
+            font-weight: 600;
         }
 
-        /* Блок цен (Прайс) */
-        .pricing-section {
-            max-width: 1200px;
-            margin: 0 auto 100px auto;
+        /* Прайс с уклоном */
+        .pricing-chaos {
+            max-width: 1300px;
+            margin: 0 auto 120px auto;
             padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
         }
 
-        .section-title {
-            font-size: 32px;
+        .section-title-chaos {
+            grid-column: span 2;
+            font-size: 38px;
             font-weight: 300;
-            margin-bottom: 30px;
             font-family: serif;
+            margin-bottom: 10px;
         }
 
-        .pricing-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .price-row {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            padding: 24px 30px;
-            border-radius: 16px;
+        .price-box-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 36px;
+            border-radius: 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             transition: border-color 0.3s, transform 0.3s;
         }
 
-        .price-row:hover {
-            border-color: rgba(223, 177, 139, 0.4);
-            transform: translateX(4px);
+        .price-box-card:hover {
+            border-color: var(--accent-mint);
+            transform: translateY(-4px);
         }
 
-        .price-row-left h3 {
-            font-size: 17px;
+        .price-box-info h3 {
+            font-size: 18px;
             font-weight: 400;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
             font-family: serif;
         }
 
-        .price-row-left p {
+        .price-box-info p {
             font-size: 13px;
-            color: var(--text-muted);
+            color: var(--muted);
         }
 
-        .price-row-right {
-            font-size: 20px;
-            font-weight: 400;
-            color: var(--accent);
+        .price-box-tag {
+            font-size: 24px;
+            font-weight: 300;
+            color: var(--accent-gold);
             font-family: serif;
         }
 
         /* Подвал */
         footer {
-            background: #070709;
-            border-top: 1px solid var(--card-border);
-            padding: 80px 20px;
+            background: #040405;
+            border-top: 1px solid var(--border);
+            padding: 100px 20px;
             text-align: center;
         }
 
-        .footer-box {
+        .footer-inner {
             max-width: 600px;
             margin: 0 auto;
         }
 
-        .footer-box h2 {
-            font-size: 30px;
+        .footer-inner h2 {
+            font-size: 36px;
             font-weight: 300;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             font-family: serif;
         }
 
-        .footer-box p {
-            color: var(--text-muted);
-            font-size: 14px;
-            margin-bottom: 30px;
+        .footer-inner p {
+            color: var(--muted);
+            font-size: 15px;
+            margin-bottom: 35px;
         }
 
-        .footer-phone {
+        .footer-phone-huge {
             display: block;
-            font-size: 32px;
-            font-weight: 300;
-            color: var(--text-main);
+            font-size: clamp(28px, 4vw, 42px);
+            color: var(--text);
             text-decoration: none;
+            font-weight: 300;
             letter-spacing: 2px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             font-family: serif;
             transition: color 0.3s;
         }
 
-        .footer-phone:hover {
-            color: var(--accent);
+        .footer-phone-huge:hover {
+            color: var(--accent-mint);
+        }
+
+        .btn-huge {
+            background: var(--accent-gold);
+            color: #070709;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            padding: 18px 44px;
+            border-radius: 16px;
+            text-transform: uppercase;
+            display: inline-block;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 0 35px var(--glow-gold);
+        }
+
+        .btn-huge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px rgba(243, 186, 123, 0.4);
         }
 
         /* Лайтбокс */
@@ -380,15 +370,15 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(7, 7, 9, 0.95);
+            background: rgba(4, 4, 5, 0.96);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 1000;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.4s ease;
-            backdrop-filter: blur(10px);
+            transition: opacity 0.4s;
+            backdrop-filter: blur(12px);
         }
 
         .lightbox.active {
@@ -397,28 +387,22 @@
         }
 
         .lightbox img {
-            max-width: 88%;
-            max-height: 88vh;
+            max-width: 90%;
+            max-height: 90vh;
             object-fit: contain;
-            border-radius: 12px;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+            border-radius: 16px;
         }
 
         .lightbox-close {
             position: absolute;
-            top: 30px;
-            right: 30px;
+            top: 35px;
+            right: 35px;
             color: #fff;
-            font-size: 36px;
+            font-size: 40px;
             cursor: pointer;
             background: none;
             border: none;
             opacity: 0.7;
-            transition: opacity 0.3s;
-        }
-
-        .lightbox-close:hover {
-            opacity: 1;
         }
 
         /* Анимации на русском */
@@ -426,24 +410,24 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
-        @keyframes fadeInDown {
+        @keyframes slideDown {
             from { opacity: 0; transform: translate(-50%, -20px); }
             to { opacity: 1; transform: translate(-50%, 0); }
         }
-
         @keyframes scaleUp {
-            from { opacity: 0; transform: scale(0.96) translateY(15px); }
+            from { opacity: 0; transform: scale(0.95) translateY(20px); }
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        /* Адаптивность для телефонов */
+        /* Адаптив для телефонов */
         @media (max-width: 900px) {
-            .hero { grid-template-columns: 1fr; gap: 30px; padding-top: 120px; }
-            .hero-image-card { height: 320px; }
-            .bento-grid { grid-template-columns: 1fr; }
-            .bento-item.large { grid-column: span 1; }
-            header { width: 95%; padding: 12px 20px; }
+            .hero-chaos { grid-template-columns: 1fr; padding-top: 120px; }
+            .hero-card-img { height: 360px; transform: rotate(0deg); }
+            .gallery-chaos { display: flex; flex-direction: column; }
+            .item-2, .item-4, .item-6 { margin-top: 0; }
+            .pricing-chaos { grid-template-columns: 1fr; }
+            .section-title-chaos { grid-column: span 1; }
+            header { width: 95%; padding: 12px 18px; }
             .header-phone { display: none; }
         }
     </style>
@@ -455,166 +439,125 @@
         <a href="#" class="logo">Алина Смирнова</a>
         <div class="header-right">
             <a href="tel:+79991234567" class="header-phone">+7 (999) 123-45-67</a>
-            <a href="tel:+79991234567" class="btn-main">Позвонить</a>
+            <a href="tel:+79991234567" class="btn-call-sm">Позвонить</a>
         </div>
     </header>
 
     <!-- Главный экран -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Эстетика и стиль <span>вашего маникюра</span></h1>
-            <p>Профессиональный уход, безупречная стерильность и современные тренды дизайна в уютной студии.</p>
-            <div class="hero-badge-box">
-                <div class="hero-badge">
-                    <b>100%</b>
-                    <span>Стерильность</span>
-                </div>
-                <div class="hero-badge">
-                    <b>4 недели</b>
-                    <span>Носкость без сколов</span>
-                </div>
-            </div>
+    <section class="hero-chaos">
+        <div class="hero-text-box">
+            <h1>Безупречный стиль <span>ваших рук</span></h1>
+            <p>Новый уровень эстетики маникюра. Авторский дизайн, абсолютная безопасность и трендовые техники покрытия.</p>
         </div>
-        <div class="hero-image-card">
-            <img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=900&auto=format&fit=crop&q=85" alt="Премиум маникюр">
+        <div class="hero-card-img">
+            <img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=1000&auto=format&fit=crop&q=85" alt="Маникюр топ">
         </div>
     </section>
 
     <!-- Категории -->
-    <div class="categories-wrap">
+    <div class="categories-chaos">
         <button class="cat-btn active" onclick="filterCategory('minimal')">Минимализм</button>
         <button class="cat-btn" onclick="filterCategory('french')">Френч</button>
         <button class="cat-btn" onclick="filterCategory('art')">Дизайн</button>
         <button class="cat-btn" onclick="filterCategory('pedicure')">Педикюр</button>
     </div>
 
-    <!-- Галерея (Bento Grid) -->
-    <section class="gallery-section">
-        <div class="bento-grid" id="grid">
-            
-            <!-- МИНИМАЛИЗМ -->
-            <div class="bento-item minimal large" data-category="minimal">
-                <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=1000&auto=format&fit=crop&q=85" alt="Минимализм">
-                <div class="bento-info">
-                    <h3>Молочный гель-лат с акцентом</h3>
-                    <span>Минимализм</span>
-                </div>
-            </div>
-            <div class="bento-item minimal" data-category="minimal">
-                <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=900&auto=format&fit=crop&q=85" alt="Минимализм">
-                <div class="bento-info">
-                    <h3>Пастельный глянец</h3>
-                    <span>Минимализм</span>
-                </div>
-            </div>
-            <div class="bento-item minimal" data-category="minimal">
-                <img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=900&auto=format&fit=crop&q=85" alt="Минимализм">
-                <div class="bento-info">
-                    <h3>Нюд и геометрия</h3>
-                    <span>Минимализм</span>
-                </div>
-            </div>
+    <!-- Асимметричная галерея -->
+    <section class="gallery-chaos" id="grid">
+        
+        <!-- МИНИМАЛИЗМ -->
+        <div class="gallery-item item-1 minimal visible" data-category="minimal">
+            <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=1000&auto=format&fit=crop&q=85" alt="Минимализм">
+            <div class="gallery-info"><h3>Молочный глянец и геометрия</h3><span>Минимализм</span></div>
+        </div>
+        <div class="gallery-item item-2 minimal visible" data-category="minimal">
+            <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=1000&auto=format&fit=crop&q=85" alt="Минимализм">
+            <div class="gallery-info"><h3>Пастельный нюд</h3><span>Минимализм</span></div>
+        </div>
+        <div class="gallery-item item-3 minimal visible" data-category="minimal">
+            <img src="https://images.unsplash.com/photo-1563178406-4cdc2923acbc?w=1000&auto=format&fit=crop&q=85" alt="Минимализм">
+            <div class="gallery-info"><h3>Тонкие линии</h3><span>Минимализм</span></div>
+        </div>
 
-            <!-- ФРЕНЧ -->
-            <div class="bento-item french large" data-category="french">
-                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1000&auto=format&fit=crop&q=85" alt="Френч">
-                <div class="bento-info">
-                    <h3>Идеальный классический френч</h3>
-                    <span>Френч</span>
-                </div>
-            </div>
-            <div class="bento-item french" data-category="french">
-                <img src="https://images.unsplash.com/photo-1599459164670-0b53360bc64d?w=900&auto=format&fit=crop&q=85" alt="Френч">
-                <div class="bento-info">
-                    <h3>Тонкий цветной контур</h3>
-                    <span>Френч</span>
-                </div>
-            </div>
+        <!-- ФРЕНЧ -->
+        <div class="gallery-item item-4 french" data-category="french">
+            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1000&auto=format&fit=crop&q=85" alt="Френч">
+            <div class="gallery-info"><h3>Классический белый френч</h3><span>Френч</span></div>
+        </div>
+        <div class="gallery-item item-5 french" data-category="french">
+            <img src="https://images.unsplash.com/photo-1599459164670-0b53360bc64d?w=1000&auto=format&fit=crop&q=85" alt="Френч">
+            <div class="gallery-info"><h3>Цветной контур</h3><span>Френч</span></div>
+        </div>
 
-            <!-- ДИЗАЙН -->
-            <div class="bento-item art" data-category="art">
-                <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=900&auto=format&fit=crop&q=85" alt="Дизайн">
-                <div class="bento-info">
-                    <h3>Абстракция и фольга</h3>
-                    <span>Дизайн</span>
-                </div>
-            </div>
-            <div class="bento-item art large" data-category="art">
-                <img src="https://images.unsplash.com/photo-1563178406-4cdc2923acbc?w=1000&auto=format&fit=crop&q=85" alt="Дизайн">
-                <div class="bento-info">
-                    <h3>Сложный текстурный дизайн</h3>
-                    <span>Дизайн</span>
-                </div>
-            </div>
+        <!-- ДИЗАЙН -->
+        <div class="gallery-item item-1 art" data-category="art">
+            <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=1000&auto=format&fit=crop&q=85" alt="Дизайн">
+            <div class="gallery-info"><h3>Абстракция и акценты</h3><span>Дизайн</span></div>
+        </div>
+        <div class="gallery-item item-2 art" data-category="art">
+            <img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=1000&auto=format&fit=crop&q=85" alt="Дизайн">
+            <div class="gallery-info"><h3>Текстурный арт</h3><span>Дизайн</span></div>
+        </div>
 
-            <!-- ПЕДИКЮР -->
-            <div class="bento-item pedicure large" data-category="pedicure">
-                <img src="https://images.unsplash.com/photo-1519415387727-a7c8db1fb965?w=1000&auto=format&fit=crop&q=85" alt="Педикюр">
-                <div class="bento-info">
-                    <h3>Эстетичный полный уход</h3>
-                    <span>Педикюр</span>
-                </div>
-            </div>
-            <div class="bento-item pedicure" data-category="pedicure">
-                <img src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?w=900&auto=format&fit=crop&q=85" alt="Педикюр">
-                <div class="bento-info">
-                    <h3>Покрытие с дизайном</h3>
-                    <span>Педикюр</span>
-                </div>
-            </div>
+        <!-- ПЕДИКЮР -->
+        <div class="gallery-item item-4 pedicure" data-category="pedicure">
+            <img src="https://images.unsplash.com/photo-1519415387727-a7c8db1fb965?w=1000&auto=format&fit=crop&q=85" alt="Педикюр">
+            <div class="gallery-info"><h3>Эстетичный педикюр</h3><span>Педикюр</span></div>
+        </div>
+        <div class="gallery-item item-5 pedicure" data-category="pedicure">
+            <img src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?w=1000&auto=format&fit=crop&q=85" alt="Педикюр">
+            <div class="gallery-info"><h3>Уход и покрытие</h3><span>Педикюр</span></div>
+        </div>
 
+    </section>
+
+    <!-- Прайс -->
+    <section class="pricing-chaos">
+        <h2 class="section-title-chaos">Стоимость услуг</h2>
+        <div class="price-box-card">
+            <div class="price-box-info">
+                <h3>Маникюр без покрытия</h3>
+                <p>Аппаратный / комбинированный</p>
+            </div>
+            <div class="price-box-tag">1 500 ₽</div>
+        </div>
+        <div class="price-box-card">
+            <div class="price-box-info">
+                <h3>Маникюр + гель-лак</h3>
+                <p>Снятие, укрепление, покрытие</p>
+            </div>
+            <div class="price-box-tag">2 500 ₽</div>
+        </div>
+        <div class="price-box-card">
+            <div class="price-box-info">
+                <h3>Наращивание ногтей</h3>
+                <p>Любая длина и форма</p>
+            </div>
+            <div class="price-box-tag">3 500 ₽</div>
+        </div>
+        <div class="price-box-card">
+            <div class="price-box-info">
+                <h3>Педикюр полный</h3>
+                <p>Обработка стоп + покрытие</p>
+            </div>
+            <div class="price-box-tag">2 800 ₽</div>
         </div>
     </section>
 
-    <!-- Прайс-лист -->
-    <section class="pricing-section">
-        <h2 class="section-title">Стоимость услуг</h2>
-        <div class="pricing-list">
-            <div class="price-row">
-                <div class="price-row-left">
-                    <h3>Маникюр без покрытия</h3>
-                    <p>Комбинированный / аппаратный уход</p>
-                </div>
-                <div class="price-row-right">1 500 ₽</div>
-            </div>
-            <div class="price-row">
-                <div class="price-row-left">
-                    <h3>Маникюр + гель-лак</h3>
-                    <p>Снятие, укрепление, выравнивание, покрытие</p>
-                </div>
-                <div class="price-row-right">2 500 ₽</div>
-            </div>
-            <div class="price-row">
-                <div class="price-row-left">
-                    <h3>Наращивание ногтей</h3>
-                    <p>Любая длина, форма и дизайн на выбор</p>
-                </div>
-                <div class="price-row-right">3 500 ₽</div>
-            </div>
-            <div class="price-row">
-                <div class="price-row-left">
-                    <h3>Педикюр полный</h3>
-                    <p>Обработка стоп, пальчиков и покрытие гель-лаком</p>
-                </div>
-                <div class="price-row-right">2 800 ₽</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Подвал / Контакты -->
+    <!-- Подвал -->
     <footer>
-        <div class="footer-box">
+        <div class="footer-inner">
             <h2>Записаться на процедуру</h2>
-            <p>Позвоните мне прямо сейчас, чтобы подобрать удобное окошко для записи:</p>
-            <a href="tel:+79991234567" class="footer-phone">+7 (999) 123-45-67</a>
-            <a href="tel:+79991234567" class="btn-main" style="padding: 14px 32px; font-size: 12px;">Позвонить мастеру</a>
+            <p>Позвоните мне, чтобы выбрать удобное время:</p>
+            <a href="tel:+79991234567" class="footer-phone-huge">+7 (999) 123-45-67</a>
+            <a href="tel:+79991234567" class="btn-huge">Позвонить мастеру</a>
         </div>
     </footer>
 
     <!-- Лайтбокс -->
     <div class="lightbox" id="lightbox">
         <button class="lightbox-close" id="lightboxClose">&times;</button>
-        <img id="lightboxImg" src="" alt="Просмотр фото">
+        <img id="lightboxImg" src="" alt="Фото">
     </div>
 
     <script>
@@ -622,7 +565,7 @@
             document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
 
-            document.querySelectorAll('.bento-item').forEach(item => {
+            document.querySelectorAll('.gallery-item').forEach(item => {
                 if (item.classList.contains(category)) {
                     item.classList.add('visible');
                 } else {
@@ -631,18 +574,10 @@
             });
         }
 
-        window.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.bento-item').forEach(item => {
-                if (item.classList.contains('minimal')) {
-                    item.classList.add('visible');
-                }
-            });
-        });
-
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightboxImg');
         const lightboxClose = document.getElementById('lightboxClose');
-        const images = document.querySelectorAll('.bento-item img');
+        const images = document.querySelectorAll('.gallery-item img, .hero-card-img img');
 
         images.forEach(img => {
             img.addEventListener('click', () => {
@@ -656,9 +591,7 @@
         });
 
         lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) {
-                lightbox.classList.remove('active');
-            }
+            if (e.target === lightbox) lightbox.classList.remove('active');
         });
     </script>
 </body>
