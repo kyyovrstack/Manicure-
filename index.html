@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Алина Смирнова — Мастер маникюра</title>
+    <style>
+        :root {
+            --bg-color: #0f0e0e;
+            --card-bg: #181616;
+            --text-color: #f4f4f4;
+            --muted-color: #999999;
+            --accent-color: #d4a373; /* Благородный бежево-золотой акцент */
+            --whatsapp-color: #25D366;
+            --telegram-color: #229ED9;
+            --transition: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Шапка */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 40px;
+            background: rgba(15, 14, 14, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-decoration: none;
+            color: var(--text-color);
+            text-transform: uppercase;
+        }
+
+        .header-btn {
+            color: var(--bg-color);
+            background: var(--accent-color);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            transition: opacity 0.3s;
+        }
+
+        .header-btn:hover {
+            opacity: 0.85;
+        }
+
+        /* Главный экран */
+        .hero {
+            padding: 150px 40px 60px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 4vw, 56px);
+            font-weight: 300;
+            margin-bottom: 15px;
+            font-family: serif;
+        }
+
+        .hero h1 span {
+            color: var(--accent-color);
+            font-style: italic;
+        }
+
+        .hero p {
+            color: var(--muted-color);
+            font-size: 15px;
+            max-width: 450px;
+            margin: 0 auto 30px auto;
+            line-height: 1.5;
+        }
+
+        /* Фильтры */
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            padding: 0 20px;
+            margin-bottom: 40px;
+        }
+
+        .cat-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--muted-color);
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cat-btn:hover, .cat-btn.active {
+            background: var(--accent-color);
+            color: var(--bg-color);
+            border-color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        /* Галерея */
+        .gallery-section {
+            padding: 0 40px 80px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            background: var(--card-bg);
+            display: none;
+        }
+
+        .portfolio-item.visible {
+            display: block;
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s var(--transition);
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.04);
+        }
+
+        .portfolio-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            pointer-events: none;
+        }
+
+        .portfolio-info h3 {
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom: 4px;
+        }
+
+        .portfolio-info span {
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            color: var(--accent-color);
+            text-transform: uppercase;
+        }
+
+        /* Услуги и цены */
+        .services-section {
+            padding: 60px 40px 100px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 300;
+            margin-bottom: 50px;
+            font-family: serif;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .service-info h3 {
+            font-size: 18px;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+
+        .service-info p {
+            font-size: 13px;
+            color: var(--muted-color);
+        }
+
+        .service-price {
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--accent-color);
+            white-space: nowrap;
+            margin-left: 20px;
+        }
+
+        /* Подвал */
+        footer {
+            background: #090808;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .footer-content h2 {
+            font-size: 28px;
+            font-weight: 300;
+            margin-bottom: 15px;
+            font-family: serif;
+        }
+
+        .footer-content p {
+            color: var(--muted-color);
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .messenger-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .msg-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 30px;
+            border-radius: 30px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        .msg-btn:hover {
+            transform: translateY(-3px);
+            opacity: 0.9;
+        }
+
+        .whatsapp-btn { background-color: var(--whatsapp-color); }
+        .telegram-btn { background-color: var(--telegram-color); }
+
+        /* Лайтбокс */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox img {
+            max-width: 85%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            color: #fff;
+            font-size: 35px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Адаптив */
+        @media (max-width: 900px) {
+            .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+            .services-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 600px) {
+            .portfolio-grid { grid-template-columns: 1fr; }
+            header { padding: 15px 20px; }
+            .hero { padding: 120px 20px 40px 20px; }
+            .gallery-section, .services-section { padding: 0 20px 60px 20px; }
+            .messenger-buttons { flex-direction: column; }
+            .msg-btn { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Шапка -->
+    <header>
+        <a href="#" class="logo">Алина Смирнова</a>
+        <a href="https://wa.me/79991234567" target="_blank" class="header-btn">Записаться</a>
+    </header>
+
+    <!-- Главный экран -->
+    <section class="hero">
+        <h1>Идеальный маникюр <span>с заботой</span> о ваших руках</h1>
+        <p>Чистый маникюр, премиальные материалы, стерильные инструменты и дизайн любой сложности.</p>
+    </section>
+
+    <!-- Категории портфолио -->
+    <div class="categories">
+        <button class="cat-btn active" onclick="filterCategory('minimal')">Минимализм</button>
+        <button class="cat-btn" onclick="filterCategory('french')">Френч</button>
+        <button class="cat-btn" onclick="filterCategory('art')">Дизайн</button>
+        <button class="cat-btn" onclick="filterCategory('pedicure')">Педикюр</button>
+    </div>
+
+    <!-- Галерея -->
+    <section class="gallery-section">
+        <div class="portfolio-grid" id="grid">
+            
+            <!-- МИНИМАЛИЗМ -->
+            <div class="portfolio-item minimal" data-category="minimal">
+                <img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=800&auto=format&fit=crop&q=80" alt="Минимализм 1">
+                <div class="portfolio-info"><h3>Нюд и геометрия</h3><span>Минимализм</span></div>
+            </div>
+            <div class="portfolio-item minimal" data-category="minimal">
+                <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&auto=format&fit=crop&q=80" alt="Минимализм 2">
+                <div class="portfolio-info"><h3>Молочный гель-лак</h3><span>Минимализм</span></div>
+            </div>
+            <div class="portfolio-item minimal" data-category="minimal">
+                <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=800&auto=format&fit=crop&q=80" alt="Минимализм 3">
+                <div class="portfolio-info"><h3>Классический пастельный</h3><span>Минимализм</span></div>
+            </div>
+
+            <!-- ФРЕНЧ -->
+            <div class="portfolio-item french" data-category="french">
+                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&auto=format&fit=crop&q=80" alt="Френч 1">
+                <div class="portfolio-info"><h3>Идеальный классический френч</h3><span>Френч</span></div>
+            </div>
+            <div class="portfolio-item french" data-category="french">
+                <img src="https://images.unsplash.com/photo-1599459164670-0b53360bc64d?w=800&auto=format&fit=crop&q=80" alt="Френч 2">
+                <div class="portfolio-info"><h3>Цветной контур</h3><span>Френч</span></div>
+            </div>
+
+            <!-- ДИЗАЙН -->
+            <div class="portfolio-item art" data-category="art">
+                <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=800&auto=format&fit=crop&q=80" alt="Дизайн 1">
+                <div class="portfolio-info"><h3>Абстракция и фольга</h3><span>Дизайн</span></div>
+            </div>
+            <div class="portfolio-item art" data-category="art">
+                <img src="https://images.unsplash.com/photo-1563178406-4cdc2923acbc?w=800&auto=format&fit=crop&q=80" alt="Дизайн 2">
+                <div class="portfolio-info"><h3>Градиент и блестки</h3><span>Дизайн</span></div>
+            </div>
+
+            <!-- ПЕДИКЮР -->
+            <div class="portfolio-item pedicure" data-category="pedicure">
+                <img src="https://images.unsplash.com/photo-1519415387727-a7c8db1fb965?w=800&auto=format&fit=crop&q=80" alt="Педикюр 1">
+                <div class="portfolio-info"><h3>Эстетичный педикюр</h3><span>Педикюр</span></div>
+            </div>
+            <div class="portfolio-item pedicure" data-category="pedicure">
+                <img src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?w=800&auto=format&fit=crop&q=80" alt="Педикюр 2">
+                <div class="portfolio-info"><h3>Покрытие с дизайном</h3><span>Педикюр</span></div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Услуги и цены -->
+    <section class="services-section">
+        <h2 class="section-title">Прайс-лист</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-info">
+                    <h3>Маникюр без покрытия</h3>
+                    <p>Комбинированный / аппаратный</p>
+                </div>
+                <div class="service-price">1 500 ₽</div>
+            </div>
+            <div class="service-card">
+                <div class="service-info">
+                    <h3>Маникюр + гель-лак</h3>
+                    <p>Снятие, укрепление, покрытие, дизайн</p>
+                </div>
+                <div class="service-price">2 500 ₽</div>
+            </div>
+            <div class="service-card">
+                <div class="service-info">
+                    <h3>Наращивание ногтей</h3>
+                    <p>Любая длина и форма</p>
+                </div>
+                <div class="service-price">3 500 ₽</div>
+            </div>
+            <div class="service-card">
+                <div class="service-info">
+                    <h3>Педикюр полный</h3>
+                    <p>Обработка стоп и пальчиков + покрытие</p>
+                </div>
+                <div class="service-price">2 800 ₽</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал / Контакты -->
+    <footer>
+        <div class="footer-content">
+            <h2>Онлайн-запись</h2>
+            <p>Выберите удобный мессенджер для записи на процедуру:</p>
+            
+            <div class="messenger-buttons">
+                <a href="https://wa.me/79991234567" target="_blank" class="msg-btn whatsapp-btn">Написать в WhatsApp</a>
+                <a href="https://t.me/username" target="_blank" class="msg-btn telegram-btn">Написать в Telegram</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Лайтбокс -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
+        <img id="lightboxImg" src="" alt="Zoomed">
+    </div>
+
+    <script>
+        function filterCategory(category) {
+            document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            document.querySelectorAll('.portfolio-item').forEach(item => {
+                if (item.classList.contains(category)) {
+                    item.classList.add('visible');
+                } else {
+                    item.classList.remove('visible');
+                }
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.portfolio-item').forEach(item => {
+                if (item.classList.contains('minimal')) {
+                    item.classList.add('visible');
+                }
+            });
+        });
+
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxClose = document.getElementById('lightboxClose');
+        const images = document.querySelectorAll('.portfolio-item img');
+
+        images.forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightbox.classList.add('active');
+            });
+        });
+
+        lightboxClose.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
