@@ -160,7 +160,6 @@
             color: var(--accent-mint);
         }
 
-        /* Картинки рядом друг с другом среднего размера */
         .photos-row {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -194,7 +193,6 @@
             transform: scale(1.05);
         }
 
-        /* Цены внутри раздела */
         .prices-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -235,7 +233,6 @@
             font-family: serif;
         }
 
-        /* Подвал */
         footer {
             background: #040405;
             border-top: 1px solid var(--border);
@@ -296,7 +293,6 @@
             transform: scale(1.05);
         }
 
-        /* Лайтбокс */
         .lightbox {
             position: fixed;
             top: 0;
@@ -346,7 +342,6 @@
 </head>
 <body>
 
-    <!-- Шапка -->
     <header>
         <a href="#" class="logo">Алина Смирнова</a>
         <div class="header-right">
@@ -355,27 +350,24 @@
         </div>
     </header>
 
-    <!-- Главный блок -->
     <section class="hero">
         <h1>Эстетика и стиль <span>вашего образа</span></h1>
         <p>Авторский маникюр, аккуратный педикюр и профессиональный макияж с гарантией безупречного качества.</p>
     </section>
 
-    <!-- Разделы -->
     <div class="sections-container">
 
-        <!-- 1. МАНИКЮР (ровно 5 фоток рядом) -->
+        <!-- 1. МАНИКЮР -->
         <div class="service-section">
             <div class="section-header-box">
                 <h2 class="section-title">Маникюр</h2>
                 <span class="section-subtitle">Раздел 01</span>
             </div>
             <div class="photos-row">
-                <div class="photo-card"><img src="28532.jpg" alt="Маникюр 1"></div>
-                <div class="photo-card"><img src="28530.jpg" alt="Маникюр 2"></div>
-                <div class="photo-card"><img src="28533.jpg" alt="Маникюр 3"></div>
-                <div class="photo-card"><img src="28534.jpg" alt="Маникюр 4"></div>
-                <div class="photo-card"><img src="28535.jpg" alt="Маникюр 5"></div>
+                <div class="photo-card"><img src="https://i.imgur.com/NuJYdZY.jpg" alt="Маникюр 1"></div>
+                <div class="photo-card"><img src="https://i.imgur.com/6XkUo0k.jpg" alt="Маникюр 2"></div>
+                <div class="photo-card"><img src="https://i.imgur.com/M8HMKmY.jpg" alt="Маникюр 3"></div>
+                <div class="photo-card"><img src="https://i.imgur.com/taajSIM.jpg" alt="Маникюр 4"></div>
             </div>
             <div class="prices-grid">
                 <div class="price-item">
@@ -409,9 +401,9 @@
                 <span class="section-subtitle">Раздел 02</span>
             </div>
             <div class="photos-row">
-                <div class="photo-card"><img src="28536.jpg" alt="Педикюр 1"></div>
-                <div class="photo-card"><img src="28537.jpg" alt="Педикюр 2"></div>
-                <div class="photo-card"><img src="28538.jpg" alt="Педикюр 3"></div>
+                <div class="photo-card"><img src="https://i.imgur.com/Qy6CBqs.jpg" alt="Педикюр 1"></div>
+                <div class="photo-card"><img src="https://i.imgur.com/Tc1HM1j.jpg" alt="Педикюр 2"></div>
+                <div class="photo-card"><img src="https://i.imgur.com/BstXyZ0.jpg" alt="Педикюр 3"></div>
             </div>
             <div class="prices-grid">
                 <div class="price-item">
@@ -438,8 +430,10 @@
                 <span class="section-subtitle">Раздел 03</span>
             </div>
             <div class="photos-row">
-                <div class="photo-card"><img src="28544.jpg" alt="Макияж 1"></div>
-                <div class="photo-card"><img src="28542.jpg" alt="Макияж 2"></div>
+                <div class="photo-card"><img src="https://i.imgur.com/WAfIDEj.jpg" alt="Макияж 1"></div>
+                <div class="photo-card"><img src="https://i.imgur.com/X3fca21.jpg" alt="Макияж 2"></div>
+                <div class="photo-card"><img src="https://i.imgur.com/fS2Cp0u.jpg" alt="Макияж 3"></div>
+                <div class="photo-card"><img src="https://i.imgur.com/KxPcT17.jpg" alt="Макияж 4"></div>
             </div>
             <div class="prices-grid">
                 <div class="price-item">
@@ -461,7 +455,6 @@
 
     </div>
 
-    <!-- Подвал -->
     <footer>
         <div class="footer-inner">
             <h2>Записаться на процедуру</h2>
@@ -471,7 +464,6 @@
         </div>
     </footer>
 
-    <!-- Лайтбокс -->
     <div class="lightbox" id="lightbox">
         <button class="lightbox-close" id="lightboxClose">&times;</button>
         <img id="lightboxImg" src="" alt="Фото">
